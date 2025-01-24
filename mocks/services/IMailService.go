@@ -3,7 +3,7 @@
 package services
 
 import (
-	services "github.com/MarcelArt/ModelCraft/services"
+	services "github.com/MarcelArt/ollama-query/services"
 	mock "github.com/stretchr/testify/mock"
 )
 

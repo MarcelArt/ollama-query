@@ -6,7 +6,7 @@ import (
 	fiber "github.com/gofiber/fiber/v2"
 	mock "github.com/stretchr/testify/mock"
 
-	models "github.com/MarcelArt/ModelCraft/models"
+	models "github.com/MarcelArt/ollama-query/models"
 
 	paginate "github.com/morkid/paginate"
 )
