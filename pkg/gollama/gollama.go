@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"os"
 )
 
 type Gollama struct {
@@ -39,8 +38,6 @@ func (g *Gollama) Chat(chatReq ChatRequest) (ChatResponse, error) {
 	if err != nil {
 		return chatRes, err
 	}
-
-	os.WriteFile("jsonReq.json", jsonReq, 0644)
 
 	request, err := http.NewRequest("POST", g.Host+"/api/chat", bytes.NewBuffer(jsonReq))
 	if err != nil {

@@ -52,7 +52,7 @@ func (h *AIHandler) Ask(c *fiber.Ctx) error {
 	g := gollama.New()
 
 	systemContext := fmt.Sprintf(`
-		You are a database assistant. Generate SQL queries based on user input without executing them, your response only contains sql query only. The database contains the following tables and columns with this specification:
+		You are a database assistant. Generate SQL queries based on user input without executing them, your response only contains sql query only. The database contains the following tables and columns with this specification in JSON format please do note some table is a bridge table:
 		%s
 	`, string(tableJSON))
 
