@@ -3,14 +3,15 @@ package layout
 templ Main() {
     <html>
         <head>
-            <title>ModelCraft</title>
+            <title>Ollama Query</title>
             <script src="/scripts/tailwind.js"></script>
             <script src="/scripts/htmx.min.js"></script>
             <script src="/scripts/response-targets.js"></script>
+            <script type="module" src="https://md-block.verou.me/md-block.js"></script>
         </head>
         <body class="bg-gray-100">
             <div class="bg-blue-500 p-4">
-                <h1 class="text-white text-2xl">ModelCraft</h1>
+                <h1 class="text-white text-2xl">Ollama Query</h1>
             </div>
             <div class="container mx-auto mt-4">
                 { children... }

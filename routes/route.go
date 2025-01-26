@@ -10,6 +10,7 @@ import (
 	"github.com/MarcelArt/ollama-query/repositories"
 	api_routes "github.com/MarcelArt/ollama-query/routes/api"
 	view_routes "github.com/MarcelArt/ollama-query/routes/view"
+	"github.com/MarcelArt/ollama-query/services"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/limiter"
@@ -27,8 +28,13 @@ func SetupRoutes(app *fiber.App) {
 	}))
 
 	app.Static("/scripts", "./public/static/scripts")
+	app.Static("/assets", "./public/static/assets")
 
-	app.Get("/", view_handlers.HelloWorldView)
+	db := database.GetDB()
+	tRepo := repositories.NewTableRepo(db)
+	aiHandler := view_handlers.NewAIHandler(services.NewAIService(tRepo), services.NewTableService(tRepo))
+	app.Get("/", aiHandler.Index)
+	app.Post("/", aiHandler.Ask)
 
 	if config.Env.ServerENV != "prod" {
 		view_routes.SetupDevToolsRoutes(app)
