@@ -45,6 +45,9 @@ func (h *TableHandler) MigrateModels(c *fiber.Ctx) error {
 	if err := database.MigrateDB(); err != nil {
 		return utils.Render(c, components.Toast(err.Error(), "error"))
 	}
+	if err := database.SeedDB(); err != nil {
+		return utils.Render(c, components.Toast(err.Error(), "error"))
+	}
 
 	return utils.Render(c, components.Toast("Database Droped", "success"))
 }

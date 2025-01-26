@@ -13,6 +13,7 @@ func Migrate(arg string) {
 		config.SetupENV()
 		database.ConnectDB()
 		database.MigrateDB()
+		database.SeedDB()
 	case "down":
 		config.SetupENV()
 		database.ConnectDB()
